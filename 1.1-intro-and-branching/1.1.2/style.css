@@ -1,0 +1,14 @@
+.greeting {
+    position: absolute;
+    top: 50%;
+    left: 35%; 
+    background: rgba(255, 255, 255, 0.5);
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 12px;
+}
