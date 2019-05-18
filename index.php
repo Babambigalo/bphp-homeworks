@@ -21,6 +21,12 @@
                     <li><a href="1.2-strings-and-forms/1.2.2-name-standart">Задание 1.2.2</a></li>
                 </ul>
             </li>
+            <li> Занятие 1.3. Массивы и циклы
+                <ul>
+                    <li><a href="1.3-arrays-and-functions/1-places">Задание 1</a></li>
+                    <li><a href="1.3-arrays-and-functions/2-search">Задание 2</a></li>
+                </ul>
+            </li>
         </ul>
     </li>
 </ul>
