@@ -1,16 +1,15 @@
 <?php
 function generate($rows,$placesPerRow,$avaliableCount) {
     $map = [];
-    for($i = 0; $i < $rows; $i++) {
-        $map[$i] = [];
-        for($j = 0; $j < $placesPerRow; $j++) {
-            $map[$i][] = FALSE;
-        }
-    }
-
     if ($rows*$placesPerRow > $avaliableCount) {
         return FALSE;
     }else {
+        for($i = 0; $i < $rows; $i++) {
+            $map[$i] = [];
+            for($j = 0; $j < $placesPerRow; $j++) {
+                $map[$i][] = FALSE;
+            }
+        }
         return $map;
     }
 }
@@ -47,18 +46,19 @@ function logReserve($row, $place, $result){
 function checkPlacesOfMap($map,$requireNearPlaces) {
     for($i=0;$i<count($map);$i++){
         $checkPos = 0;
+        $row = $i+1;
+        $places = ["Ряд ". "$row"];        
         for($j=0;$j<(count($map[$i])-$requireNearPlaces + 1);$j++) {
             if($checkPos !== $requireNearPlaces) {
                 if($map[$i][$j] === FALSE) {
                     $checkPos++;
-                }else {
+                    $place = $j+1;
+                    $places[] =  "Место " . "$place"; 
+                } else {
                     $checkPos = 0;
                 }
             }else {
-                $row = $i+1; 
-                echo "<div>Номер ряда $row , место $j</div>";
-                $j--;
-                $checkPos = 0;
+                return print_r($places);
             }
         }     
     }
