@@ -47,13 +47,13 @@ function checkPlacesOfMap($map,$requireNearPlaces) {
     for($i=0;$i<count($map);$i++){
         $checkPos = 0;
         $row = $i+1;
-        $places = ["Ряд ". "$row"];        
+        $places = ["Ряд $row"];        
         for($j=0;$j<(count($map[$i])-$requireNearPlaces + 1);$j++) {
             if($checkPos !== $requireNearPlaces) {
                 if($map[$i][$j] === FALSE) {
                     $checkPos++;
                     $place = $j+1;
-                    $places[] =  "Место " . "$place"; 
+                    $places[] =  "Место $place"; 
                 } else {
                     $checkPos = 0;
                 }

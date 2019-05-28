@@ -27,6 +27,12 @@
                     <li><a href="1.3-arrays-and-functions/2-search">Задание 2</a></li>
                 </ul>
             </li>
+            <li> Занятие 2.1. Файлы
+                <ul>
+                    <li><a href="2.1-files/2.1.1">Задание 1</a></li>
+                    <li><a href="2.1-files/2.1.2">Задание 2</a></li>
+                </ul>
+            </li>
         </ul>
     </li>
 </ul>
