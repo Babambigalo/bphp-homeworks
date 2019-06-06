@@ -4,6 +4,8 @@ include 'config/SystemConfig.php';
 include 'classes/JsonFileAccessModel.php';
 $jsonObj = new JsonFileAccessModel('json1');
 $json = $jsonObj->readJson();
-print_r($json);
+var_dump($json);
+//$check = file_exists('./files/json1.json');
+//var_dump(filesize('./files/json1.json'));
 
 ?>

@@ -8,12 +8,20 @@
         }
 
         private function connect() {
-            if ($this->file = fopen($this->fileName,'r+') == FALSE) echo 'При открытии файла произошла ошибка';  
-            echo $this->file;
+            if (fopen($this->fileName,'r+') == FALSE) {
+                echo 'При открытии файла произошла ошибка';
+            }else {
+                $this->file = fopen($this->fileName,'r');
+            }  
         }
 
         private function disconnect() {
-            if (fclose($this->file)==FALSE) echo 'При закрытии файла произошла ошибка';
+            fclose($this->file);
+            // if (fclose($this->file)==FALSE) {
+            //     echo 'При закрытии файла произошла ошибка';
+            // } else {
+            //     fclose($this->file);
+            // }
         }
 
         public function read() {
@@ -38,21 +46,20 @@
         public function readJson() {
             $this->connect();
             $text;
-            print_r(file_exists($this->fileName));
-            echo 'this file = ' . $this->file;
-            if (fread($this->file,3000) !== FALSE) {
-                $text = fread($this->file,3000);
-                $this->disconnect();
-                return json_encode($text);
-            }else {
-                echo 'Во время чтения файла произошла ошибка';
-            }  
+            return json_encode(self::read());
+            // if (fread($this->file,filesize($this->fileName)) !== FALSE) {
+            //     $text = fread($this->file,filesize($this->fileName));
+            //     $this->disconnect();
+            //     return json_encode($text);
+            // }else {
+            //     echo 'Во время чтения файла произошла ошибка';
+            // }  
 
         }
 
         public function writeJson($jsonObject){
             if(fopen($this->file,'w+') !== FALSE) fopen($this->file,'w+');
-            if(fwrite($this->file,json_decode($text,JSON_PRETTY_PRINT))!== FALSE) echo 'Успешено';
+            if(fwrite($this->file,json_decode($jsonObject,JSON_PRETTY_PRINT))!== FALSE) echo 'Успешено';
             $this->disconnect();
         }
     }
