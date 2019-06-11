@@ -4,15 +4,19 @@
         protected $fileName;
         protected $file;
         public function __construct($fileName) {
-            $this->fileName = parent::DATABASE_PATH . $fileName . '.json';
+            //$this->fileName = parent::DATABASE_PATH . $fileName . '.json';
+            $this->fileName = parent::DATABASE_PATH.$fileName.'.json';
         }
 
         private function connect() {
-            if (fopen($this->fileName,'r+') == FALSE) {
-                echo 'При открытии файла произошла ошибка';
-            }else {
-                $this->file = fopen($this->fileName,'r');
-            }  
+            var_dump($this->file);
+            if ($this->file == NULL) {
+                if (fopen($this->fileName,'r+') == FALSE) {
+                    echo 'Ошибка во время открытия файла';
+                }else {                    
+                    $this->file = fopen($this->fileName,'r+');
+                } 
+            } 
         }
 
         private function disconnect() {
@@ -25,8 +29,8 @@
         }
 
         public function read() {
+            ($_SERVER['DOCUMENT_ROOT']);
             $this->connect();
-            $text;
             if (fread($this->file,3000) !== FALSE) {
                 $text = fread($this->file,3000);
                 $this->disconnect();
@@ -45,8 +49,8 @@
 
         public function readJson() {
             $this->connect();
-            $text;
-            return json_encode(self::read());
+            return json_encode($this::read());
+            
             // if (fread($this->file,filesize($this->fileName)) !== FALSE) {
             //     $text = fread($this->file,filesize($this->fileName));
             //     $this->disconnect();
